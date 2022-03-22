@@ -1,0 +1,107 @@
+h1 {
+  width: auto;
+}
+
+.grid-container {
+  display: grid;
+}
+
+#game-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-choice {
+  width: 64px;
+  height: 79px;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  padding: 0px 0px;
+  margin: 10px;
+}
+
+.btn-choice:active {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+#choice-rock {
+  background-image: url("/images/rock.png");
+}
+
+#choice-rock:active {
+  background-image: url("/images/rock-pressed.png");
+}
+
+#choice-paper {
+  background-image: url("/images/paper.png");
+}
+
+#choice-paper:active {
+  background-image: url("/images/paper-pressed.png");
+}
+
+#choice-scissors {
+  background-image: url("/images/scissors.png");
+}
+
+#choice-scissors:active {
+  background-image: url("/images/scissors-pressed.png");
+}
+
+#game {
+  width: fit-content;
+}
+
+#scoreboard {
+  margin: 0px 10px;
+  grid-template-columns: repeat(3, 68px);
+  grid-template-rows: auto auto auto;
+  gap: 1px 20px;
+}
+
+#txt-player {
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: center;
+}
+
+#player-choice {
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: center;
+}
+
+#player-score {
+  grid-area: 3 / 1 / 4 / 2;
+  justify-self: center;
+}
+
+#txt-vs {
+  grid-area: 1 / 2 / 3 / 3;
+  align-self: center;
+  justify-self: center;
+}
+
+#score-colon {
+  grid-area: 3 / 2 / 4 / 3;
+  justify-self: center;
+}
+
+#txt-computer {
+  grid-area: 1 / 3 / 2 / 4;
+  justify-self: center;
+}
+
+#computer-choice {
+  grid-area: 2 / 3 / 3 / 4;
+  justify-self: center;
+}
+
+#computer-score {
+  grid-area: 3 / 3 / 4 / 4;
+  justify-self: center;
+}
+
+#match-end {
+  color: green;
+  margin: 5px;
+}
