@@ -13,12 +13,13 @@ h1 {
 }
 
 .btn-choice {
-  width: 64px;
-  height: 79px;
+  width: 60px;
+  height: 75px;
   border-width: 2px;
   border-color: rgba(0, 0, 0, 0.5);
   padding: 0px 0px;
   margin: 10px;
+  background-repeat: no-repeat;
 }
 
 .btn-choice:active {
@@ -27,26 +28,32 @@ h1 {
 
 #choice-rock {
   background-image: url("/images/rock.png");
+  background-size: cover;
 }
 
 #choice-rock:active {
   background-image: url("/images/rock-pressed.png");
+  background-size: cover;
 }
 
 #choice-paper {
   background-image: url("/images/paper.png");
+  background-size: cover;
 }
 
 #choice-paper:active {
   background-image: url("/images/paper-pressed.png");
+  background-size: cover;
 }
 
 #choice-scissors {
   background-image: url("/images/scissors.png");
+  background-size: cover;
 }
 
 #choice-scissors:active {
   background-image: url("/images/scissors-pressed.png");
+  background-size: cover;
 }
 
 #game {
