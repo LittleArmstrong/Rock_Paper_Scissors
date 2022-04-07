@@ -1,5 +1,5 @@
 import { $ } from "./toolbox.mjs";
-import { RPS_Game } from "./rps_game.mjs";
+import { rps_game } from "./rps_game.mjs";
 
 const rps_inputs = {
    rock: $("choice-rock"),
@@ -14,4 +14,5 @@ const rps_outputs = {
    game_result: $("game-result"),
 };
 
-var game = new RPS_Game(rps_inputs, rps_outputs);
+var game = rps_game;
+game.init(rps_inputs, rps_outputs);
