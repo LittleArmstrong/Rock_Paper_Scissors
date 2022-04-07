@@ -1,7 +1,7 @@
-import { $, get_random_int } from "./toolbox.mjs";
+import { get_random_int } from "./toolbox.mjs";
 
 export class RPS_Game {
-   constructor() {
+   constructor(inputs, outputs) {
       this._constants = {
          CHOICE_LIST: ["Paper", "Rock", "Scissors"],
          get N_CHOICES() {
@@ -14,19 +14,10 @@ export class RPS_Game {
          MAX_SCORE_ROUND: 2,
       };
 
-      this.input_tags = {
-         btn_rock: $("choice-rock"),
-         btn_paper: $("choice-paper"),
-         btn_scissors: $("choice-scissors"),
-      };
+      this.inputs = inputs;
+      console.log(this.inputs);
 
-      this.output_tags = {
-         txt_player_choice: $("player-choice"),
-         txt_player_score: $("player-score"),
-         txt_comp_choice: $("comp-choice"),
-         txt_comp_score: $("comp-score"),
-         txt_game_result: $("game-result"),
-      };
+      this.outputs = outputs;
 
       this.settings = {
          comp_choosing_time: 1000,
@@ -51,21 +42,21 @@ export class RPS_Game {
    }
 
    _bind_events() {
-      this.input_tags.btn_paper.addEventListener("click", () => {
+      this.inputs.paper.addEventListener("click", () => {
          if (this._round_state.is_new_round) {
             this._round_state.player_choice = this._constants.PAPER;
             this._play_one_round(this);
          }
       });
 
-      this.input_tags.btn_rock.addEventListener("click", () => {
+      this.inputs.rock.addEventListener("click", () => {
          if (this._round_state.is_new_round) {
             this._round_state.player_choice = this._constants.ROCK;
             this._play_one_round(this);
          }
       });
 
-      this.input_tags.btn_scissors.addEventListener("click", () => {
+      this.inputs.scissors.addEventListener("click", () => {
          if (this._round_state.is_new_round) {
             this._round_state.player_choice = this._constants.SCISSORS;
             this._play_one_round(this);
@@ -111,7 +102,7 @@ export class RPS_Game {
    }
 
    _show_player_choice(self) {
-      self.output_tags.txt_player_choice.textContent =
+      self.outputs.player_choice.textContent =
          self._constants.CHOICE_LIST[this._round_state.player_choice];
    }
 
@@ -138,7 +129,7 @@ export class RPS_Game {
    }
 
    _show_comp_choice(self, choice, resolve = null) {
-      self.output_tags.txt_comp_choice.textContent = self._constants.CHOICE_LIST[choice];
+      self.outputs.comp_choice.textContent = self._constants.CHOICE_LIST[choice];
       if (resolve !== null) {
          resolve("success");
       }
@@ -149,7 +140,7 @@ export class RPS_Game {
    }
 
    _show_round_result(self, resolve = null) {
-      self.output_tags.txt_game_result.textContent =
+      self.outputs.game_result.textContent =
          self._constants.ROUND_RESULT_LIST[self._round_state.round_result];
       if (resolve !== null) {
          resolve("success");
@@ -163,8 +154,8 @@ export class RPS_Game {
    }
 
    _show_score(self, resolve = null) {
-      self.output_tags.txt_player_score.textContent = self._match_state.player_score;
-      self.output_tags.txt_comp_score.textContent = self._match_state.comp_score;
+      self.outputs.player_score.textContent = self._match_state.player_score;
+      self.outputs.comp_score.textContent = self._match_state.comp_score;
       if (resolve !== null) {
          resolve("success");
       }
@@ -177,8 +168,8 @@ export class RPS_Game {
       self._round_state.is_new_round = false;
 
       //round specific outputs
-      self.output_tags.txt_player_choice.textContent = "-";
-      self.output_tags.txt_comp_choice.textContent = "-";
-      self.output_tags.txt_game_result.textContent = "-";
+      self.outputs.player_choice.textContent = "-";
+      self.outputs.comp_choice.textContent = "-";
+      self.outputs.game_result.textContent = "-";
    }
 }
