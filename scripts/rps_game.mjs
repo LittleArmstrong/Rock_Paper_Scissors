@@ -94,6 +94,15 @@ function reset_round() {
    rps_game.outputs.game_result.textContent = "-";
 }
 
+function reset_match() {
+   reset_round();
+   match_state.comp_score = 0;
+   match_state.player_score = 0;
+
+   rps_game.outputs.player_score.textContent = 0;
+   rps_game.outputs.comp_score.textContent = 0;
+}
+
 async function play_one_round() {
    reset_round();
    show_player_choice();
@@ -145,7 +154,7 @@ async function play_one_round() {
 
 export const rps_game = {
    init(inputs, outputs, new_settings = null) {
-      this.inputs = inputs; //rock, paper, scissors
+      this.inputs = inputs; //rock, paper, scissors, new_game
       this.outputs = outputs; //  player_choice, player_score, comp_choice, comp_score, game_result
       this.settings = {
          //default settings
@@ -175,5 +184,10 @@ export const rps_game = {
             }
          });
       }
+      this.inputs["new_game"].addEventListener("click", (event) => {
+         reset_match();
+         round_state.is_new_round = true;
+         event.stopPropagation();
+      });
    },
 };

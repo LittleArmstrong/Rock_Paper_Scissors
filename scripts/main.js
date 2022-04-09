@@ -5,6 +5,7 @@ const rps_inputs = {
    rock: $("choice-rock"),
    paper: $("choice-paper"),
    scissors: $("choice-scissors"),
+   new_game: $("new-game"),
 };
 const rps_outputs = {
    player_choice: $("player-choice"),
